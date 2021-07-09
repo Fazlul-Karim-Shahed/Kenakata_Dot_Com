@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 function Navbar() {
 
     const menu = () => {
-        if (document.getElementById("overlay").style.width == "100%") {
-            document.getElementById("overlay").style.width = "0%"
+        if (document.getElementById("overlay").style.height == "100%") {
+            document.getElementById("overlay").style.height = "0%"
         } else {
-            document.getElementById("overlay").style.width = "100%"
+            document.getElementById("overlay").style.height = "100%"
         }
     }
 
@@ -16,7 +16,7 @@ function Navbar() {
         <div>
             <div className="navbar">
                 <div className="navbar_left">
-                    <div><Link className="logo" style={{ color: "white", fontSize: "5vh" }} to="/">Logo</Link></div>
+                    <div><Link className="logo" style={{ color: "white", fontSize: "4vh" }} to="/">Logo</Link></div>
                     <div onClick={menu} className="menu_icon">
                         <div className="line"></div>
                         <div className="line"></div>

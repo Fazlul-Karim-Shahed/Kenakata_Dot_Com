@@ -2,6 +2,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @media screen and (min-width: 1000px) {
@@ -34,7 +35,7 @@
     margin: 0px 10px;
     text-decoration: none;
     color: aliceblue;
-    font-size: 2.5vh;
+    font-size: 2.3vh;
   }
 }
 
@@ -72,8 +73,8 @@
   }
 
   .navbar_right {
-    width: 0;
-    height: 100%;
+    width: 100%;
+    height: 0%;
     background-color: rgba(40, 61, 55, 0.95);
     position: fixed;
     top: 10vh;
