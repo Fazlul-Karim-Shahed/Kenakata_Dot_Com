@@ -10,7 +10,9 @@
     justify-content: space-between;
     width: 100%;
     height: 10vh;
-    background-color: rgb(226, 43, 73);
+    background-color: rgba(40, 61, 55, 0.95);
+    position: relative;
+     overflow: hidden;
   }
 
   .navbar_left {
@@ -23,13 +25,16 @@
     padding: 30px;
     display: flex;
     align-items: center;
-    margin: 1px 1px;
+  }
+  .logo{
+    text-decoration: none;
   }
 
-  a {
+  .link {
     margin: 0px 10px;
     text-decoration: none;
     color: aliceblue;
+    font-size: 2.5vh;
   }
 }
 
@@ -40,6 +45,7 @@
     width: 100%;
     height: 10vh;
     background-color: rgba(40, 61, 55, 0.95);
+   
   }
 
   .navbar_left {
@@ -82,10 +88,14 @@
     margin: 50px 0px;
   }
 
-  .navbar_right_links a {
+  .navbar_right_links .link {
     display: block;
     margin: 20px 0px;
     color: white;
+    text-decoration: none;
+    font-size: 4vh;
+  }
+  .logo{
     text-decoration: none;
   }
 }

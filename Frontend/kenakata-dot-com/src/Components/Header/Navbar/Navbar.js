@@ -1,12 +1,13 @@
 import React from 'react'
 import './Navbar.css'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
 
     const menu = () => {
-        if (document.getElementById("overlay").style.width == "100%"){
+        if (document.getElementById("overlay").style.width == "100%") {
             document.getElementById("overlay").style.width = "0%"
-        }else{
+        } else {
             document.getElementById("overlay").style.width = "100%"
         }
     }
@@ -15,7 +16,7 @@ function Navbar() {
         <div>
             <div className="navbar">
                 <div className="navbar_left">
-                    <div>logo</div>
+                    <div><Link className="logo" style={{ color: "white", fontSize: "5vh" }} to="/">Logo</Link></div>
                     <div onClick={menu} className="menu_icon">
                         <div className="line"></div>
                         <div className="line"></div>
@@ -24,10 +25,10 @@ function Navbar() {
                 </div>
                 <div id="overlay" className="navbar_right">
                     <div className="navbar_right_links">
-                        <a href="#">Home</a>
-                        <a href="#">Home</a>
-                        <a href="#">Home</a>
-                        <a href="#">Home</a>
+                        <Link onClick={menu} className="link" style={{ color: "white" }} to="/">Home</Link>
+                        <Link onClick={menu} className="link" style={{ color: "white" }} to="/dashboard">Dashboard</Link>
+                        <Link onClick={menu} className="link" style={{ color: "white" }} to="/about">About</Link>
+                        <Link onClick={menu} className="link" style={{ color: "white" }} to="/contact">Contact</Link>
                     </div>
                 </div>
             </div>
