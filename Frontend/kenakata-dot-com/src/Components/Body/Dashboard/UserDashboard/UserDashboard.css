@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+@media screen and (max-width: 600px) {
+  .userDashboard_dashboardContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+
+  .userDashboard_usefulLinks {
+    width: 100%;
+    /* background-color: rgb(195, 195, 226); */
+    padding: 20px;
+    border: 1px solid black;
+  }
+
+  .userDashboard_link {
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    display: block;
+    margin: 10px 0px;
+  }
+
+  .userDashboard_profileContainer {
+    margin-bottom: 20px;
+    background-color: rgb(17, 71, 73);
+    border: 1px solid black;
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .userDashboard_dashboardContainer {
+    display: flex;
+  }
+
+  .userDashboard_usefulLinks {
+    width: 30%;
+    /* background-color: rgb(195, 195, 226); */
+    margin: 20px 20px;
+    padding: 20px;
+    border: 1px solid black;
+  }
+
+  .userDashboard_link {
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    display: block;
+    margin: 10px 0px;
+  }
+
+  .userDashboard_profileContainer {
+    width: 70%;
+    background-color: rgb(17, 71, 73);
+    margin: 20px 20px;
+    border: 1px solid black;
+    padding: 20px;
+  }
+}

@@ -1,0 +1,30 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.topNav a{
+    text-decoration: none;
+    color: cornflowerblue;
+}
+@media screen and (min-width : 600px) {
+    .topNav{
+    display: flex;
+    justify-content: space-around;
+    /* padding: 2vh 5vh; */
+    align-items: center;
+    height: 7vh;
+    background-color: rgb(223, 215, 215);
+}
+}
+
+@media screen and (max-width : 600px) {
+    .topNav{
+    display: flex;
+    justify-content: space-around;
+    padding: 2vh 1vh;
+    background-color: rgb(248, 247, 247);
+}
+
+
+}

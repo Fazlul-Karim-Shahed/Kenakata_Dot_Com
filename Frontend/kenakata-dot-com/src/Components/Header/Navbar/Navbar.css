@@ -2,18 +2,19 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @media screen and (min-width: 1000px) {
+
   .navbar {
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: 10vh;
     background-color: rgba(40, 61, 55, 0.95);
-    position: relative;
-     overflow: hidden;
+    overflow: hidden;
+    
   }
 
   .navbar_left {
@@ -22,12 +23,17 @@
     padding: 30px;
   }
 
+  .closeBtn{
+    display: none;
+  }
   .navbar_right {
     padding: 30px;
+    height: 100%;
     display: flex;
     align-items: center;
+    margin: auto 0px;
   }
-  .logo{
+  .logo {
     text-decoration: none;
   }
 
@@ -46,7 +52,6 @@
     width: 100%;
     height: 10vh;
     background-color: rgba(40, 61, 55, 0.95);
-   
   }
 
   .navbar_left {
@@ -65,7 +70,10 @@
     cursor: pointer;
   }
 
-  .menu_icon .line {
+ 
+  .menu_icon .line1,
+  .line2,
+  .line3 {
     width: 30px;
     height: 4px;
     background-color: white;
@@ -77,16 +85,22 @@
     height: 0%;
     background-color: rgba(40, 61, 55, 0.95);
     position: fixed;
-    top: 10vh;
+    top: 0vh;
     left: 0px;
     transition: 0.5s;
     overflow: hidden;
   }
 
+   .closeBtn{
+    float: right;
+   margin: 50px 40px;
+   color: wheat;
+   cursor: pointer;
+  }
   .navbar_right_links {
     width: 100%;
     text-align: center;
-    margin: 50px 0px;
+    margin: 150px 0px;
   }
 
   .navbar_right_links .link {
@@ -96,7 +110,8 @@
     text-decoration: none;
     font-size: 4vh;
   }
-  .logo{
+  .logo {
     text-decoration: none;
   }
+
 }
