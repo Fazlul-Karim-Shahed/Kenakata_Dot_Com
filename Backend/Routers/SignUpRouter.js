@@ -21,8 +21,8 @@ const signUp = async (req, res) => {
             data.password = await bcrypt.hash(req.body.password, salt)
 
             const user = await data.save()
-            console.log("User", user)
-            let token = await jwt.sign(_.pick(user, ["firstName", "lastName", "mobile", "email", "role"]), "secret-token", { expiresIn: "1h" })
+            // console.log("User", user)
+            let token = await jwt.sign(_.pick(user, ["firstName", "lastName", "mobile", "email", "role", "_id"]), "secret-key", { expiresIn: "1h" })
 
             res.send({ token: token, message: "Account created successfully", type: true })
 

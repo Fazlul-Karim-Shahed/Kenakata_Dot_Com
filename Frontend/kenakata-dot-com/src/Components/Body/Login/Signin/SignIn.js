@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FAST_AUTH } from '../../../../Redux/ActionType'
 import jwtDecode from 'jwt-decode'
+import {signInApi } from '../../../../Api/AuthApi'
 
 
 const mapStateToProps = state => {
@@ -31,11 +32,8 @@ function signIn(props) {
 
                 onSubmit={(values) => {
                     // console.log(values)
-                    fetch(process.env.REACT_APP_LOCAL_PORT + '/signin', {
-                        method: "POST",
-                        body: JSON.stringify(values)
-                    })
-                        .then(res => res.json())
+                    signInApi(values)
+                    
                         .then(data => {
                             if(data.type==false) throw data.message
 

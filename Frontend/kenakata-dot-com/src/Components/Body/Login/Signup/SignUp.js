@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { FAST_AUTH } from '../../../../Redux/ActionType'
 import { Link } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
+import { signUpApi } from '../../../../Api/AuthApi'
 
 const mapStateToProps = state => {
     return{
@@ -28,15 +29,8 @@ function SignUp(props) {
 
                 }}
 
-
-
                 onSubmit={(values) => {
-                    // console.log(values)
-                    fetch(process.env.REACT_APP_LOCAL_PORT + '/signup', {
-                        method: "POST",
-                        body: JSON.stringify(values)
-                    })
-                        .then(res => res.json())
+                    signUpApi(values)
                         .then(data => {
                             if (data.type == false) throw data.message
 

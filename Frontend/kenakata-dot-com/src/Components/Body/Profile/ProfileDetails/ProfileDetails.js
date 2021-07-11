@@ -1,46 +1,59 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik } from 'formik'
 import { connect } from 'react-redux'
 import './ProfileDetails.css'
-import { PROFILE_INFO } from '../../../../Redux/ActionType'
+import { PROFILE_INFO, UPDATE_PROFILE_MODAL } from '../../../../Redux/ActionType'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import UpdateProfile from '../UpdateProfile/UpdateProfile'
+import { getProfileApi } from '../../../../Api/ProfileApi'
 
 
 const mapStateToProps = state => {
     return {
         userInfo: state.userInfo,
-        profileInfo: state.profileInfo
+        profileInfo: state.profileInfo,
+        updateModal: state.updateModal
     }
 }
 
 function ProfileDetails(props) {
 
+    useEffect(() => {
 
-    fetch(process.env.REACT_APP_LOCAL_PORT + '/profile/', {
-        method: "GET",
-        headers: {
-            "Authorization": localStorage.getItem("kenakata-token")
-        }
-    }).then(res => res.json())
-        .then(data => {
+        getProfileApi().then(data => {
+            // console.log(data)
             props.dispatch({
                 type: PROFILE_INFO,
                 value: data
             })
         })
 
+    }, [])
 
+    const updateModal = () => {
+        props.dispatch({
+            type: UPDATE_PROFILE_MODAL,
+            value: true
+        })
+    }
+
+    let imgSrc;
+    if (props.profileInfo && props.profileInfo.photo) {
+        let str = new Buffer.from(props.profileInfo.photo.data).toString("base64")
+        imgSrc = `data:${props.profileInfo.photo.contentType};base64,${str}`
+    } else {
+        imgSrc = "/unknown.jpg"
+    }
 
 
     return (
         <div>
+            <UpdateProfile />
             <div className="profileDetails_upperImage">
-                <Link to="/update-profile">
-                    <FontAwesomeIcon style={{ color: "white", fontSize: "25px" }} icon={faUserEdit} />
-                </Link>
-                <img src="/unknown.jpg" height="150px" alt="" />
+                <FontAwesomeIcon onClick={updateModal} style={{ color: "white", fontSize: "25px", cursor: "pointer" }} icon={faUserEdit} />
+                <img src={imgSrc} height="150px" alt="" />
 
             </div>
 

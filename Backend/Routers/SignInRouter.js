@@ -20,7 +20,7 @@ const signIn = async (req, res) => {
 
             if (checkPass) {
                 
-                const token = await jwt.sign(_.pick(findData, ["firstName", "lastName", "mobile", "email", "role"]), "secret-key", {expiresIn:"1h"})
+                const token = await jwt.sign(_.pick(findData, ["firstName", "lastName", "mobile", "email", "role", "_id"]), "secret-key", {expiresIn:"1h"})
 
                 res.send({ token: token, message: "Login successfully", type: true })
                 

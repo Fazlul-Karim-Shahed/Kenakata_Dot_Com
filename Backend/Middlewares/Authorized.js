@@ -6,15 +6,19 @@ const Authorized = async (req, res, next) => {
     try {
 
         const token = req.header("Authorization")
+        // console.log(token)
         let verifyData = await jwt.verify(token, "secret-key")
-        if(verifyData){
+        // console.log(verifyData)
+        if (verifyData) {
             req.user = verifyData
+            // console.log(req.user)
             next()
         }
-        else req.send({message : "Authorization failed", type : false})
+        else req.send({ message: "Authorization failed", type: false })
 
     } catch (err) {
-        req.send({ message: err, type: false })
+        // req.send({ message: err, type: false })
+        console.log(err)
     }
 
 }
