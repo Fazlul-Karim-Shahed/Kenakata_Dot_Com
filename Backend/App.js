@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const SignUpRouter = require('./Routers/SignUpRouter')
 const SignInRouter = require('./Routers/SignInRouter')
 const ProfileRouter = require('./Routers/ProfileRouter')
+const CategoryRouter = require('./Routers/CategoryRouter')
 
 
 dotenv.config()
@@ -16,7 +17,7 @@ mongoose.connect("mongodb+srv://fazlul_karim:71217@cluster0.syo05.mongodb.net/Ke
     useUnifiedTopology: true,
     useCreateIndex: true
 })
-.then(data => console.log("connected")).catch(err => console.log(err))
+    .then(data => console.log("connected")).catch(err => console.log(err))
 
 
 app.use(cors())
@@ -28,11 +29,12 @@ app.use(express({
 app.use('/signup', SignUpRouter)
 app.use('/signIn', SignInRouter)
 app.use('/profile', ProfileRouter)
+app.use('/category', CategoryRouter)
 
 
 
 app.get('/', (req, res) => {
-    res.send({message : "All ok"})
+    res.send({ message: "All ok" })
 })
 
 const port = process.env.PORT

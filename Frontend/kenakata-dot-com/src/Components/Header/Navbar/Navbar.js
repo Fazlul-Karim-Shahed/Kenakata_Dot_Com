@@ -38,7 +38,7 @@ function Navbar(props) {
                     <div className="navbar_right_links">
                         <Link onClick={close} className="link" style={{ color: "white" }} to="/">Home</Link>
                         <Link onClick={close} className="link" style={{ color: "white" }} to="/shop">Shop</Link>
-                        <Link onClick={close} className="link" style={{ color: "white" }} to={props.authenticated? `/${props.userInfo.role}/dashboard` : `/signin`}>Dashboard</Link>
+                        <Link onClick={close} className="link" style={{ color: "white" }} to={props.authenticated ? `/${props.userInfo.role}/${props.userInfo._id}/dashboard` : `/signin`}>Dashboard</Link>
                         <Link onClick={close} className="link" style={{ color: "white" }} to="/contact">Contact</Link>
                         {props.authenticated ? <Link onClick={close} className="link" style={{ color: "white" }} to="/logout">Logout</Link> : <Link onClick={close} className="link" style={{ color: "white" }} to="/signin">Login</Link>}
                     </div>

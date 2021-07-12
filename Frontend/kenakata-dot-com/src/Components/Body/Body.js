@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import Contact from './Contact/Contact'
+import CreateCategory from './CreateCategory/CreateCategory'
+import CreateProduct from './CreateProduct/CreateProduct'
 import AdminDashboard from './Dashboard/AdminDashboard/AdminDashboard'
 import UserDashboard from './Dashboard/UserDashboard/UserDashboard'
 import Home from './Home/Home'
@@ -27,11 +29,13 @@ function Body(props) {
         routers = <div>
             <Route exact path="/" component={Home} />
             <Route path="/shop" component={Shop} />
-            <Route path={`/${props.userInfo.role}/dashboard`} component={props.userInfo.role === "user" ? UserDashboard : AdminDashboard} />
+            <Route path={`/${props.userInfo.role}/${props.userInfo._id}/dashboard`} component={props.userInfo.role === "user" ? UserDashboard : AdminDashboard} />
             <Route path="/contact" component={Contact} />
             <Route path="/logout" component={Logout} />
             <Route path="/update-profile" component={UpdateProfile} />
-            
+            <Route path={`/create-category`} component={props.userInfo.role === "admin" ? CreateCategory : Home} />
+            <Route path={`/create-product`} component={props.userInfo.role === "admin" ? CreateProduct : Home} />
+
         </div>
     }
 

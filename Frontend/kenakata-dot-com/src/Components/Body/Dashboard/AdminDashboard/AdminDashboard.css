@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.adminDashboard_container {
+  display: flex;
+  padding: 10px;
+}
+
+.adminDashboard_left {
+  width: 40%;
+  padding: 40px;
+  border-bottom: 2px solid black;
+  border-radius: 50px;
+  margin: 20px;
+  box-shadow: 10px 10px 20px;
+  background-color: rgb(17, 71, 73);
+  color: rgb(253, 242, 142);
+}
+.adminDashboard_right {
+  width: 60%;
+  padding: 40px;
+  margin: 20px;
+  /* border-left: 2px solid black; */
+  border-bottom: 2px solid black;
+  border-radius: 50px;
+  box-shadow: 10px 10px 20px;
+  background-color: rgb(17, 71, 73);
+  color: rgb(253, 242, 142);
+  
+}
+
+.adminDashboard_profile{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid;
+    padding: 10px;
+}
+
+.adminDashboard_profile_left{
+    width: 30%;
+    /* font-family: monospace; */
+}
+.adminDashboard_profile_right{
+    width: 70%;
+    /* font-family: monospace; */
+}
+
+.adminDashboard_links{
+    color: rgb(253, 242, 142);
+    text-decoration: none;
+    display: block;
+    margin: 10px 0px;
+    border-bottom: 1px dotted white;
+    padding: 10px 0px;
+}
+
+.adminDashboard_links:hover{
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+
+@media screen and (max-width : 600px) {
+  .adminDashboard_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .adminDashboard_left {
+    width: 100%;
+    margin: 20px auto;
+  }
+  .adminDashboard_right {
+    width: 100%;
+    margin: 20px auto;
+  }
+}
+
+
+

@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.CreateCategory_container{
+   text-align: center; 
+}
+.CreateCategory_input{
+    width: 50%;
+    padding: 10px;
+    margin: 20px auto;
+    display: block;
+}
+
+.CreateCategory_btn{
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width : 600px) {
+    .CreateCategory_input{
+    width: 80%;
+    margin: 20px auto;
+}
+}

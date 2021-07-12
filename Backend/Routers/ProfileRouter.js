@@ -5,7 +5,6 @@ const _ = require('lodash')
 const formidable = require('formidable')
 const { Profile } = require('../Models/ProfileModel')
 const fs = require('fs')
-const image_conversion = require('image-conversion')
 const { Authorized } = require('../Middlewares/Authorized')
 
 
@@ -28,22 +27,29 @@ const updateProfile = async (req, res) => {
 
             if (!findData) {
                 const profileData = new Profile(_.pick(fields, ['city', 'fax', 'user', 'address1', 'address2', 'postCode']))
-                
+
                 profileData.user = req.user._id
 
                 if (files && files.photo.size > 0) {
-                    profileData.photo.contentType = files.photo.type
-                    fs.readFile(files.photo.path, (err, buff) => {
-                        profileData.photo.data = buff
-                        const saveData = async () => {
-                            const finalData = await profileData.save()
-                            console.log(finalData)
-                            res.send({ data: finalData })
+                    if(files.photo.size > 307200){
+                        console.log("File size should be maximum 300kb")
+                        res.send({message : "File size should be maximum 300kb"})
+                    }
+                    else{
+                        profileData.photo.contentType = files.photo.type
+                        fs.readFile(files.photo.path, (err, buff) => {
+                            profileData.photo.data = buff
 
-                        }
-                        saveData()
-                    })
+                            const saveData = async () => {
+                                const finalData = await profileData.save()
+                                console.log(finalData)
+                                res.send({ data: finalData })
 
+                            }
+                            saveData()
+                        })
+
+                    }
                 }
                 else {
                     const saveData = async () => {
@@ -63,19 +69,27 @@ const updateProfile = async (req, res) => {
 
                 if (files && files.photo.size > 0) {
 
-                    fs.readFile(files.photo.path, (err, buff) => {
-                        obj["photo"] = {}
-                        obj.photo["data"] = buff
-                        obj.photo["contentType"] = files.photo.type
-                        const saveData = async () => {
-                            const updated = await Profile.updateOne({ user: req.user._id }, obj)
-                            console.log("files: ", obj)
+                    if (files.photo.size > 307200) {
+                        console.log("File size should be maximum 300kb")
+                        return res.send({ message: "File size should be maximum 300kb" })
+                    }
+                    else{
+                        fs.readFile(files.photo.path, (err, buff) => {
+                            obj["photo"] = {}
+                            obj.photo["data"] = buff
+                            obj.photo["contentType"] = files.photo.type
+                            const saveData = async () => {
+                                const updated = await Profile.updateOne({ user: req.user._id }, obj)
+                                console.log("files: ", obj)
 
-                            res.send({ data: updated })
-                        }
-                        saveData()
+                                res.send({ data: updated })
+                            }
+                            saveData()
 
-                    })
+                        })
+                    }
+
+                    
 
                 } else {
                     const saveData = async () => {
