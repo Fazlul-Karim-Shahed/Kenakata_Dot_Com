@@ -2,3 +2,5 @@
 export const FAST_AUTH = "FAST_AUTH"
 export const PROFILE_INFO = "PROFILE_INFO"
 export const UPDATE_PROFILE_MODAL = "UPDATE_PROFILE_MODAL"
+export const CATEGORY = "CATEGORY"
+export const ALL_PRODUCT = "ALL_PRODUCT"

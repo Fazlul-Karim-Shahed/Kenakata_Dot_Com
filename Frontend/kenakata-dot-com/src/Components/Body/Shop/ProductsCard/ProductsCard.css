@@ -1,0 +1,29 @@
+
+.ProductsCard_container{
+    border: 1px solid black;
+    padding: 5px;
+    background-color: rgba(229, 245, 0, 0.1);
+    border-radius: 5px;
+}
+
+.ProductsCard_container div{
+
+}
+
+.ProductsCard_pill{
+    display: inline-block;
+    color: aliceblue;
+    padding: 4px 1px;
+    border-radius: 10px;
+    background-color: crimson;
+    font-size: smaller;
+}
+
+.ProductsCard_btn{
+    padding: 5px 10px;
+    margin: 7px 0px;
+    background-color: rgb(15, 105, 101);
+    color: aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+}

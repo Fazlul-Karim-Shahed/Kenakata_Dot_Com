@@ -1,0 +1,26 @@
+
+.CreateProduct_input{
+    display: block;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.CreateProduct_input:focus{
+    background-color: rgb(135, 197, 222);
+    
+}
+
+.CreateProduct_form{
+    width: 80%;
+    margin: 30px auto;
+    background-color: rgba(119, 136, 153, .5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.CreateProduct_btn{
+    padding: 7px 10px;
+    cursor: pointer;
+}

@@ -32,10 +32,11 @@ const createCategory = async(req, res) => {
 }
 
 const getCategory = async(req, res) => {
-
+    const data = await Category.find()
+    res.send(data)
 }
 
 router.post('/create', Authorized, AdminAuthorized, createCategory)
-router.post('/get', getCategory)
+router.get('/get', getCategory)
 
 module.exports = router

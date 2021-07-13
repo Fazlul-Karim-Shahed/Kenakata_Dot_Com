@@ -4,11 +4,9 @@
     box-sizing: border-box;
 }
 
-.CreateCategory_container{
-   text-align: center; 
-}
+
 .CreateCategory_input{
-    width: 50%;
+    width: 100%;
     padding: 10px;
     margin: 20px auto;
     display: block;
@@ -17,12 +15,35 @@
 .CreateCategory_btn{
     padding: 10px;
     cursor: pointer;
+    background-color: coral;
+    border-radius: 10px;
+}
+
+.CreateCategory_form{
+    background-color: rgb(222, 243, 214);
+    padding: 15px;
+    width: 40%;
+    margin: 100px auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 30px;
+    border: 1px solid rgb(68, 224, 6);
+}
+
+#CreateCategory_alert{
+    display: none;
+    /* background-color: rgb(63, 211, 27); */
+    /* background-color: rgb(255, 63, 15); */
+    padding: 10px;
+}
+#CreateCategory_alert div{
+    display: flex;
+    justify-content: space-between;
 }
 
 
 @media screen and (max-width : 600px) {
-    .CreateCategory_input{
+.CreateCategory_form{
     width: 80%;
-    margin: 20px auto;
+    border-radius: 10px;
 }
 }

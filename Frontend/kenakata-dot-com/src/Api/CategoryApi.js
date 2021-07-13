@@ -12,3 +12,8 @@ export const createCategoryApi = value => {
 
     }).then(res => res.json())
 }
+
+export const getCategoryApi = () => {
+    return fetch(process.env.REACT_APP_LOCAL_PORT + '/category/get')
+    .then(res => res.json())
+}
