@@ -27,7 +27,6 @@ const getCart = async(req, res) => {
         const data = await Cart.find({ user: req.user._id})
         .populate("product")
         .populate("user")
-        console.log(data)
         res.send(data)
     }
     catch(err){
