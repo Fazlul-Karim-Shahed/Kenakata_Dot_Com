@@ -27,6 +27,19 @@ function CreateCategory() {
                     category: ''
                 }}
 
+                validate={(value) => {
+                    let error = {}
+
+                    if(value.category === '') {
+                        error.category = "Empty value not accepted";
+                        setAlertMessage("Empty value not accepted")
+                        document.getElementById("CreateCategory_alert").style.display = "block";
+                        document.getElementById("CreateCategory_alert").style.backgroundColor =  "rgb(255, 63, 15)"
+                    }
+
+                    return error
+                }}
+
                 onSubmit={value => {
                     createCategoryApi(value.category.toLowerCase())
                         .then(data => {
@@ -39,7 +52,7 @@ function CreateCategory() {
 
             >
 
-                {({ values, handleSubmit, handleChange }) => <div className="CreateCategory_form">
+                {({ values, handleSubmit, handleChange, errors }) => <div className="CreateCategory_form">
                     
                     <div id="CreateCategory_alert">
                         <div>
@@ -56,6 +69,7 @@ function CreateCategory() {
                             className="CreateCategory_input"
                             placeholder="Name of category"
                         />
+                        {/* <div>{errors.category}</div> */}
 
                         <button className="CreateCategory_btn" type="submit">Create</button>
                     </form>

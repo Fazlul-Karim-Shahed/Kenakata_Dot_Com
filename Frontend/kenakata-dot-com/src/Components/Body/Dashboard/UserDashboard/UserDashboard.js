@@ -8,7 +8,8 @@ import ProfileDetails from '../../Profile/ProfileDetails/ProfileDetails'
 
 const mapStateToProps = state => {
     return {
-
+        userInfo : state.userInfo,
+        authenticated : state.authenticated
     }
 }
 
@@ -24,8 +25,8 @@ function Dashboard(props) {
                         <h3>Useful Links</h3>
                     </div>
                     <div>
-                        <Link className="userDashboard_link" to="">Cart</Link>
-                        <Link className="userDashboard_link" to="">History</Link>
+                        <Link className="userDashboard_link" to={props.authenticated ? `/cart/${props.userInfo._id}` :"/signin"}>Cart</Link>
+                        <Link className="userDashboard_link" to="/history">History</Link>
 
                     </div>
                 </div>

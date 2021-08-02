@@ -18,7 +18,6 @@ function MainComponent(props) {
     let token = localStorage.getItem("kenakata-token")
     if(token){
         const userInfo = jwtDecode(token)
-        // console.log(new Date(userInfo.exp * 1000))
         props.dispatch({
             type: FAST_AUTH,
             value: new Date > new Date(userInfo.exp * 1000) ? false : true,

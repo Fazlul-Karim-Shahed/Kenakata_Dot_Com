@@ -8,6 +8,7 @@ const SignInRouter = require('./Routers/SignInRouter')
 const ProfileRouter = require('./Routers/ProfileRouter')
 const CategoryRouter = require('./Routers/CategoryRouter')
 const ProductRouter = require('./Routers/ProductRouter')
+const CartRouter = require('./Routers/CartRouter')
 
 
 dotenv.config()
@@ -32,6 +33,7 @@ app.use('/signIn', SignInRouter)
 app.use('/profile', ProfileRouter)
 app.use('/category', CategoryRouter)
 app.use('/product', ProductRouter)
+app.use('/cart', CartRouter)
 
 
 

@@ -33,3 +33,9 @@
     grid-template-columns: auto;
 }
 }
+/* 
+@media screen and (min-width : 1000px) {
+    .Shop_productsCard{
+    grid-template-columns: auto auto;
+}
+} */

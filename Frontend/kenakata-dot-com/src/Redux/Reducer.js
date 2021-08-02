@@ -1,4 +1,4 @@
-import { ALL_PRODUCT, CATEGORY, FAST_AUTH, PROFILE_INFO, UPDATE_PROFILE_MODAL } from "./ActionType"
+import { ALL_PRODUCT, CATEGORY, FAST_AUTH, PROFILE_INFO, SKIP_ALL_PRODUCT, UPDATE_PROFILE_MODAL } from "./ActionType"
 
 
 const initialState = {
@@ -45,6 +45,14 @@ const Reducer = (state = initialState, action) => {
         return {
             ...state,
             allProducts : [...action.value]
+        }
+    }
+
+    if (action.type === SKIP_ALL_PRODUCT) {
+        let allProducts = [...state.allProducts, ...action.value]
+        return {
+            ...state,
+            allProducts
         }
     }
 
