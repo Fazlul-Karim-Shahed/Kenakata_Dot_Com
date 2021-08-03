@@ -28,9 +28,14 @@
 
 }
 
-@media screen and (max-width : 600px) {
+@media screen and (max-width : 500px) {
     .Shop_productsCard{
     grid-template-columns: auto;
+    width: 90%;
+    margin: auto auto;
+}
+.Shop_filter_box{
+    display: none;
 }
 }
 /* 

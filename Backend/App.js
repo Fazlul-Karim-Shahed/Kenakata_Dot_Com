@@ -24,8 +24,10 @@ mongoose.connect("mongodb+srv://fazlul_karim:71217@cluster0.syo05.mongodb.net/Ke
 
 app.use(cors())
 app.use(express({
-    type: ['application/json', 'text/plain']
+    type: ['application/json', 'text/plain'],
+    limit : '50mb'
 }))
+
 
 
 app.use('/signup', SignUpRouter)

@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import Spinner from '../../Spinner/Spinner'
 import './ProductsCard.css'
 import { Link } from 'react-router-dom'
+import { addCartApi } from '../../../../Api/CartApi'
 
 const mapStateToProps = state => {
     return {
-        
+        authenticated : state.authenticated,
+        userInfo : state.userInfo
     }
 }
 
@@ -22,7 +24,25 @@ function ProductsCard(props) {
         imgSrc = ""
     }
 
+    let quantity = 1
     const addCart = item => {
+
+        if (props.authenticated) {
+            let obj = {
+                quantity: quantity,
+                price: item.price * quantity,
+                product: item._id,
+                user: props.userInfo._id
+            }
+            // console.log(obj)
+            addCartApi(obj).then(data => {
+                if(data.message) throw data.message
+            })
+            .catch(err => alert(err))
+        }
+        else {
+            alert("Authentication failed")
+        }
 
     }
 
@@ -35,7 +55,7 @@ function ProductsCard(props) {
                 <strong>{item.name}</strong> <br />
                 <strong style={{ marginTop: "20px" }} >{item.price}৳</strong>  <br />
                 <div className="ProductsCard_pill">in stack | {item.stock} quantity</div> <br />
-                <button onClick={addCart} className="ProductsCard_btn">Add to cart</button>
+                <button onClick={()=>addCart(item)} className="ProductsCard_btn">Add to cart</button>
                 
                 
             </div>

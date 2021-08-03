@@ -1,4 +1,4 @@
-import { ALL_PRODUCT, CATEGORY, FAST_AUTH, PROFILE_INFO, SKIP_ALL_PRODUCT, UPDATE_PROFILE_MODAL } from "./ActionType"
+import { ALL_PRODUCT, CART, CART_QUANTITY_UPDATE, CATEGORY, DELETE_CART, FAST_AUTH, PROFILE_INFO, SKIP_ALL_PRODUCT, UPDATE_PROFILE_MODAL } from "./ActionType"
 
 
 const initialState = {
@@ -7,7 +7,8 @@ const initialState = {
     profileInfo : null,
     updateModal : false,
     categoryArray : [],
-    allProducts : []
+    allProducts : [],
+    cartArray : []
 }
 
 
@@ -53,6 +54,34 @@ const Reducer = (state = initialState, action) => {
         return {
             ...state,
             allProducts
+        }
+    }
+
+    if (action.type === CART) {
+        return {
+            ...state,
+            cartArray : [...action.value]
+        }
+    }
+
+    if (action.type === CART_QUANTITY_UPDATE) {
+        let cartArray = [...state.cartArray]
+        cartArray[action.index].quantity = action.value;
+        cartArray[action.index].price = cartArray[action.index].product.price * action.value;
+        
+        return {
+            ...state,
+            cartArray
+        }
+    }
+
+    if (action.type === DELETE_CART) {
+
+        let cartArray = [...state.cartArray]
+        cartArray.splice(action.value, 1)
+        return {
+            ...state,
+            cartArray
         }
     }
 
