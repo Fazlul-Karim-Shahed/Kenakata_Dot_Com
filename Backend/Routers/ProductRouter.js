@@ -57,6 +57,7 @@ const getProducts = async (req, res) => {
             .populate("category")
             .skip(Number(req.header("skip")))
             .limit(4)
+            if(data) console.log("ok")
         res.send(data)
     } catch (err) {
         res.send({ message: "Something went wrong", type: false })

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { addCartApi } from '../../../Api/CartApi'
+import { addCommentApi, getCommentApi } from '../../../Api/CommentApi'
 import { productDetailsApi } from '../../../Api/ProductApi'
 import './ProductDetails.css'
 
@@ -15,12 +16,14 @@ function ProductDetails(props) {
 
 
     const [item, setItem] = useState(null)
+    const [comment, setComment] = useState([])
     const [quantity, setQuantity] = useState(Number(1))
 
     useEffect(() => {
 
         productDetailsApi(props.match.params.id)
             .then(data => setItem(data))
+        getCommentApi(props.match.params.id).then(data => setComment([...data]))
 
     }, [])
 
@@ -68,6 +71,30 @@ function ProductDetails(props) {
 
     }
 
+    const commentBtn = () => {
+        if(props.authenticated){
+            let comment = document.getElementById("comment").value
+            addCommentApi(comment, props.match.params.id).then(data => {
+                getCommentApi(props.match.params.id).then(data => setComment([...data]))
+            })
+        }
+        else alert("Authorization failed")
+    }
+
+    let reviews;
+    if(comment.length===0) reviews = <div>No reviews</div>;
+
+    reviews = comment.map(item => {
+        return (
+            <div className="productDetails_commentBox">
+                <div className="productDetails_commentImg">{item.user.firstName[0]}</div>
+                <div>
+                    <div><strong>{item.user.firstName} {item.user.lastName}</strong></div>
+                    <div>{item.comment}</div>
+                </div>
+            </div>
+        )
+    })
 
 
 
@@ -88,8 +115,15 @@ function ProductDetails(props) {
                 </div>
             </div>
 
-            <div>
-                Reviews : 
+            <div className="productDetails_reviews">
+                <h2>Reviews :</h2> <br />
+                <div>
+                    <input id="comment" type="textarea" />
+                    <button className="productDetails_commentBtn" onClick={commentBtn}>Comment</button>
+                    <div className="productDetails_comments">
+                        {reviews}
+                    </div>
+                </div>
             </div>
         </div>
 
